@@ -3,6 +3,7 @@ import ProfileCard from "../components/ProfileCard";
 import ProjectCard from "../components/ProjectCard";
 import ContactCard from "../components/ContactCard";
 import FeatureCard from "../components/FeatureCard";
+import CVCard from "../components/CvCard";
 
 export default function Home() {
   return (
@@ -31,17 +32,8 @@ export default function Home() {
               email="dcarnaudpro@gmail.com"
             />
           </div>
-
-          <div className={styles.parcours}>
-            <FeatureCard
-              value="5 ans"
-              label="dans le BTP"
-              href="/parcours"
-              backgroundColor="#a9dcd6"
-            />
-          </div>
-
-          <div className={styles.competences}>
+                    
+          <div className={styles.duo}>
             <FeatureCard
               value="Python"
               label="React · Next.js · TypeScript"
@@ -49,6 +41,17 @@ export default function Home() {
               backgroundColor="#8f74c4"
               textColor="#ffffff"
             />
+            <FeatureCard
+              value="5 ans"
+              label="dans le BTP"
+              href="/parcours"
+              backgroundColor="#a9dcd6"
+            />
+          </div>
+          <div className={styles.cv}>
+            <CVCard 
+              href="/cv-arnaud-pereira-da-costa.pdf" 
+              previewUrl="/cv-apercu.png" />
           </div>
         </div>
       </main>
