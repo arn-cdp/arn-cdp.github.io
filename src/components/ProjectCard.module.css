@@ -1,0 +1,69 @@
+.carte {
+  /* Réglages de l'encoche : à modifier librement */
+  --onglet-largeur: 160px;
+  --onglet-hauteur: 40px;
+  --pente: 30px;
+
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.25s;
+}
+.carte:hover {
+  transform: translateY(-6px);
+}
+
+/* La carte : l'image, avec le coin haut-gauche découpé */
+.corps {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  clip-path: polygon(
+    0 var(--onglet-hauteur),
+    calc(var(--onglet-largeur) - var(--pente)) var(--onglet-hauteur),
+    var(--onglet-largeur) 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+.carte:hover .image {
+  transform: scale(1.05);
+}
+
+/* Le texte, posé dans l'encoche : on voit donc le fond de la page */
+.onglet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: calc(var(--onglet-largeur) - var(--pente));
+  height: var(--onglet-hauteur);
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+/* Petit repère dans le coin, comme sur ta capture */
+.corps::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+}

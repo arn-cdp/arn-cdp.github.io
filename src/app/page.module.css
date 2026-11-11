@@ -22,12 +22,18 @@
   display: flex;
   flex: 1;
   width: 100%;
-  max-width: 800px;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
+  padding: 60px 40px 40px;
+}
+.titre {
+  grid-area: titre;
+  align-self: center;
+  font-family: var(--font-titre), sans-serif;
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #000;
 }
 
 .intro {
@@ -123,23 +129,7 @@ a.secondary {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
 
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
-}
 
 .code {
   font-family: var(--font-geist-mono);
@@ -148,3 +138,22 @@ a.secondary {
   padding: 0.1em 0.4em;
   border-radius: 6px;
 }
+
+.grid {
+  display: grid;
+  width: 100%;
+  min-height: calc(100vh - 100px);
+  grid-template-columns: 1.1fr 1fr 1fr 0.8fr 0.8fr;
+  grid-template-rows: auto 1.3fr 1fr;
+  grid-template-areas:
+    "profil  titre    titre    titre       titre"
+    "profil  projets  projets  parcours    competences"
+    "profil  contact  cv       parcours    competences";
+  gap: 24px;
+}
+
+.profil      { grid-area: profil; }
+.projets     { grid-area: projets; }
+.contact     { grid-area: contact; }
+.parcours    { grid-area: parcours; }
+.competences { grid-area: competences; }
