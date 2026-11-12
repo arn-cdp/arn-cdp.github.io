@@ -2,20 +2,29 @@ import styles from "./CvCard.module.css";
 
 type CvCardProps = {
   href: string;
-  previewUrl: string;
 };
 
-export default function CvCard({ href, previewUrl }: CvCardProps) {
+export default function CvCard({ href }: CvCardProps) {
   return (
-    <a
-      className={styles.carte}
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <div className={styles.carte}>
       <p className={styles.titre}>Mon CV</p>
       <p className={styles.sousTitre}>Ouvrir le PDF</p>
-      <img className={styles.apercu} src={previewUrl} alt="Aperçu de mon CV" />
-    </a>
+
+      <iframe
+        className={styles.apercu}
+        src={`${href}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+        title="Aperçu de mon CV"
+        loading="lazy"
+        tabIndex={-1}
+      />
+
+      <a
+        className={styles.lien}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Ouvrir mon CV en PDF"
+      />
+    </div>
   );
 }

@@ -3,14 +3,29 @@ import ProfileCard from "../components/ProfileCard";
 import ProjectCard from "../components/ProjectCard";
 import ContactCard from "../components/ContactCard";
 import FeatureCard from "../components/FeatureCard";
-import CVCard from "../components/CvCard";
+import CvCard from "../components/CvCard";
+import SideNav from "../components/SideNav";
+
+const navItems = [
+  { label: "Accueil", href: "/" },
+  { label: "À propos", href: "/a-propos" },
+  { label: "Projets", href: "/projets" },
+  { label: "CV", href: "/cv-arnaud-pereira-da-costa.pdf", fichier: true },
+  { label: "Parcours", href: "/parcours" },
+  { label: "Compétences", href: "/competences" },
+];
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <div className={styles.grid}>
+          <div className={styles.sidenav}>
+            <SideNav items={navItems} />
+          </div>
+
           <h1 className={styles.titre}>Portfolio</h1>
+
           <div className={styles.profil}>
             <ProfileCard
               prenom="Arnaud"
@@ -32,7 +47,7 @@ export default function Home() {
               email="dcarnaudpro@gmail.com"
             />
           </div>
-                    
+
           <div className={styles.duo}>
             <FeatureCard
               value="Python"
@@ -48,10 +63,9 @@ export default function Home() {
               backgroundColor="#a9dcd6"
             />
           </div>
+
           <div className={styles.cv}>
-            <CVCard 
-              href="/cv-arnaud-pereira-da-costa.pdf" 
-              previewUrl="/cv-apercu.png" />
+            <CvCard href="/cv-arnaud-pereira-da-costa.pdf" />
           </div>
         </div>
       </main>

@@ -1,0 +1,26 @@
+.nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.liste {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  list-style: none;
+}
+
+/* Texte à la verticale, lisible de bas en haut */
+.lien {
+  display: block;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #000;
+  transition: opacity 0.2s;
+}
+.lien:hover {
+  opacity: 0.5;
+}

@@ -17,14 +17,15 @@
   display: grid;
   width: 100%;
   min-height: calc(100vh - 100px);
-  grid-template-columns: 2.4fr repeat(5, 1fr);
+  grid-template-columns: auto 2.4fr repeat(5, 1fr);
   grid-template-rows: auto 1.8fr 1fr;
   grid-template-areas:
-    "profil  titre    titre    titre    titre    titre"
-    "profil  projets  projets  projets  cv       cv"
-    "profil  contact  contact  duo      duo      duo";
+    "nav  profil  titre    titre    titre    titre    titre"
+    "nav  profil  projets  projets  projets  cv       cv"
+    "nav  profil  contact  contact  duo      duo      duo";
   gap: 24px;
 }
+
 
 .titre {
   grid-area: titre;
@@ -36,11 +37,23 @@
   letter-spacing: -0.02em;
   color: #000;
 }
+.titre::after {
+  content: "";
+  position: absolute;
+  top: 0.04em;
+  right: -0.14em;
+  width: 0.12em;
+  height: 0.12em;
+  border-top: 0.035em solid currentColor;
+  border-right: 0.035em solid currentColor;
+}
 
 .profil   { grid-area: profil; }
 .projets  { grid-area: projets; }
 .contact  { grid-area: contact; }
 .cv       { grid-area: cv; }
+.sidenav { grid-area: nav; }
+
 
 .duo {
   grid-area: duo;

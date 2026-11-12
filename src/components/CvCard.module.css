@@ -40,6 +40,10 @@
   left: 50%;
   bottom: -18%;
   width: 52%;
+  aspect-ratio: 1 / 1.414;
+  border: 0;
+  background: white;
+  pointer-events: none;
   transform: translateX(-50%) rotate(-4deg);
   border-radius: 6px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
@@ -47,6 +51,12 @@
 }
 .carte:hover .apercu {
   transform: translateX(-50%) translateY(-10px) rotate(-2deg);
+}
+
+.lien {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
 }
 
 /* Petit repère dans le coin, comme sur les autres cartes */

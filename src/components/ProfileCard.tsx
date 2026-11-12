@@ -1,26 +1,30 @@
+import { FaRegUser } from "react-icons/fa";
 import styles from "./ProfileCard.module.css";
 
 type ProfileCardProps = {
-    prenom: string;
-    nom: string;
-    email: string;
-    photoUrl: string;
+  prenom: string;
+  nom: string;
+  email: string;
+  photoUrl: string;
 };
 
 export default function ProfileCard({ prenom, nom, email, photoUrl }: ProfileCardProps) {
   return (
     <div className={styles.carte}>
-      <div className={styles.carte_onglet}>À propos</div>
+      <div className={styles.onglet}>
+        <FaRegUser className={styles.icone} />
+        À propos
+      </div>
 
-      <div className={styles.carte_body}>
-        <div className={styles.carte_photo}>
-          <img src={photoUrl} alt={`${prenom} ${nom}`} width="250" height="262" />
+      <div className={styles.corps}>
+        <div className={styles.photo}>
+          <img src={photoUrl} alt={`${prenom} ${nom}`} />
         </div>
 
-        <div className={styles.carte_text}>
+        <div className={styles.texte}>
           <p className={styles.prenom}>{prenom}</p>
           <p className={styles.nom}>{nom}</p>
-          <p>{email}</p>
+          <p className={styles.email}>{email}</p>
         </div>
       </div>
     </div>
