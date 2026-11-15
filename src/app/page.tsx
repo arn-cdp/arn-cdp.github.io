@@ -1,74 +1,57 @@
 import styles from "./page.module.css";
-import ProfileCard from "../components/ProfileCard";
-import ProjectCard from "../components/ProjectCard";
-import ContactCard from "../components/ContactCard";
-import FeatureCard from "../components/FeatureCard";
-import CvCard from "../components/CvCard";
-import SideNav from "../components/SideNav";
-
-const navItems = [
-  { label: "Accueil", href: "/" },
-  { label: "À propos", href: "/a-propos" },
-  { label: "Projets", href: "/projets" },
-  { label: "CV", href: "/cv-arnaud-pereira-da-costa.pdf", fichier: true },
-  { label: "Parcours", href: "/parcours" },
-  { label: "Compétences", href: "/competences" },
-];
+import PageTitle from "@/components/PageTitle";
+import ProfileCard from "@/components/ProfileCard";
+import ProjectCard from "@/components/ProjectCard";
+import ContactCard from "@/components/ContactCard";
+import FeatureCard from "@/components/FeatureCard";
+import CvCard from "@/components/CvCard";
+import { profil } from "@/data/site";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <div className={styles.grid}>
-          <div className={styles.sidenav}>
-            <SideNav items={navItems} />
-          </div>
+    <div className={styles.grid}>
+      <PageTitle grand className={styles.titre}>
+        Portfolio
+      </PageTitle>
 
-          <h1 className={styles.titre}>Portfolio</h1>
+      <ProfileCard
+        className={styles.profil}
+        prenom={profil.prenom}
+        nom={profil.nom}
+        email={profil.email}
+        photoUrl={profil.photoUrl}
+        href="/a-propos"
+      />
 
-          <div className={styles.profil}>
-            <ProfileCard
-              prenom="Arnaud"
-              nom="Pereira Da Costa"
-              email="dcarnaudpro@gmail.com"
-              photoUrl="/photo_profil-removebg-preview.png"
-            />
-          </div>
+      <ProjectCard className={styles.projets} title="Projet A" imageUrl="/projet_a.png" />
 
-          <div className={styles.projets}>
-            <ProjectCard title="PROJETS" imageUrl="/projet_a.png" />
-          </div>
+      <CvCard className={styles.cv} href="/cv" pdfUrl={profil.cvUrl} />
 
-          <div className={styles.contact}>
-            <ContactCard
-              linkedinUrl="https://www.linkedin.com/in/pdc-arnaud/"
-              githubUrl="https://github.com/arn-cdp"
-              tel="0770777821"
-              email="dcarnaudpro@gmail.com"
-            />
-          </div>
+      <ContactCard
+        className={styles.contact}
+        linkedinUrl={profil.linkedinUrl}
+        githubUrl={profil.githubUrl}
+        tel={profil.tel}
+        email={profil.email}
+      />
 
-          <div className={styles.duo}>
-            <FeatureCard
-              value="Python"
-              label="React · Next.js · TypeScript"
-              href="/competences"
-              backgroundColor="#8f74c4"
-              textColor="#ffffff"
-            />
-            <FeatureCard
-              value="5 ans"
-              label="dans le BTP"
-              href="/parcours"
-              backgroundColor="#a9dcd6"
-            />
-          </div>
-
-          <div className={styles.cv}>
-            <CvCard href="/cv-arnaud-pereira-da-costa.pdf" />
-          </div>
-        </div>
-      </main>
+      <div className={styles.duo}>
+        <FeatureCard
+          onglet="Compétences"
+          value="Python"
+          label="React · Next.js · TypeScript"
+          href="/competences"
+          backgroundColor="#8f74c4"
+          textColor="#ffffff"
+        />
+        <FeatureCard
+          onglet="Parcours"
+          value="5 ans"
+          label="dans le BTP"
+          href="/parcours"
+          backgroundColor="#a9dcd6"
+        />
+      </div>
     </div>
   );
 }

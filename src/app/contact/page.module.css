@@ -1,0 +1,31 @@
+.intro {
+  font-size: 1.125rem;
+}
+
+.grille {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(240px, 1fr);
+  gap: 24px;
+  min-height: 520px;
+}
+
+.valeur {
+  font-family: var(--font-titre), sans-serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+/* Téléphone */
+@media (max-width: 700px) {
+  .grille {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    min-height: 0;
+  }
+  .valeur {
+    font-size: clamp(0.95rem, 4.3vw, 1.5rem);
+  }
+}

@@ -1,13 +1,16 @@
 .nav {
+  position: sticky;
+  top: 60px;
+  align-self: flex-start;
   display: flex;
   align-items: center;
-  height: 100%;
+  height: calc(100vh - 100px);
 }
 
 .liste {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 26px;
   list-style: none;
 }
 
@@ -21,6 +24,36 @@
   color: #000;
   transition: opacity 0.2s;
 }
+
 .lien:hover {
   opacity: 0.5;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1.5px;
+}
+
+/* Page en cours */
+.actif {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1.5px;
+}
+
+/* Téléphone : une ligne de liens en haut */
+@media (max-width: 700px) {
+  .nav {
+    position: static;
+    align-self: stretch;
+    height: auto;
+  }
+  .liste {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+  }
+  .lien {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
 }

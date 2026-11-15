@@ -1,0 +1,40 @@
+/* Styles de texte partagés par toutes les pages */
+
+.h2 {
+  font-family: var(--font-titre), sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.h3 {
+  font-family: var(--font-titre), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.p {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* Les petites pastilles (technologies, niveau...) : toujours en bas de la carte */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.tag {
+  padding: 6px 14px;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}

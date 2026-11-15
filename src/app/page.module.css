@@ -1,60 +1,33 @@
-.page {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  font-family: var(--font-geist-sans);
-}
-
-.main {
-  display: flex;
-  flex: 1;
-  width: 100%;
-  flex-direction: column;
-  padding: 60px 40px 40px;
-}
-
 .grid {
   display: grid;
-  width: 100%;
+  flex: 1;
   min-height: calc(100vh - 100px);
-  grid-template-columns: auto 2.4fr repeat(5, 1fr);
+  grid-template-columns: 2.4fr repeat(5, 1fr);
   grid-template-rows: auto 1.8fr 1fr;
   grid-template-areas:
-    "nav  profil  titre    titre    titre    titre    titre"
-    "nav  profil  projets  projets  projets  cv       cv"
-    "nav  profil  contact  contact  duo      duo      duo";
+    "profil  titre    titre    titre    titre    titre"
+    "profil  projets  projets  projets  cv       cv"
+    "profil  contact  contact  duo      duo      duo";
   gap: 24px;
 }
-
 
 .titre {
   grid-area: titre;
   align-self: center;
-  font-family: var(--font-titre), sans-serif;
-  font-size: clamp(3rem, 6vw, 6.5rem);
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: #000;
 }
-.titre::after {
-  content: "";
-  position: absolute;
-  top: 0.04em;
-  right: -0.14em;
-  width: 0.12em;
-  height: 0.12em;
-  border-top: 0.035em solid currentColor;
-  border-right: 0.035em solid currentColor;
+.profil {
+  grid-area: profil;
+  min-height: 520px;
 }
-
-.profil   { grid-area: profil; }
-.projets  { grid-area: projets; }
-.contact  { grid-area: contact; }
-.cv       { grid-area: cv; }
-.sidenav { grid-area: nav; }
-
-
+.projets {
+  grid-area: projets;
+}
+.cv {
+  grid-area: cv;
+}
+.contact {
+  grid-area: contact;
+}
 .duo {
   grid-area: duo;
   display: grid;
@@ -62,8 +35,66 @@
   gap: 24px;
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
+/* ===== Tablette : jusqu'à 1100px ===== */
+@media (max-width: 1100px) {
+  .grid {
+    min-height: auto;
+    align-content: start;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "titre   titre"
+      "profil  projets"
+      "profil  cv"
+      "contact contact"
+      "duo     duo";
+  }
+
+  .projets,
+  .cv {
+    min-height: 280px;
+  }
+  .contact {
+    min-height: 200px;
+  }
+  .duo {
+    grid-auto-rows: 220px;
+  }
+}
+
+/* ===== Téléphone : jusqu'à 700px ===== */
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "titre"
+      "profil"
+      "projets"
+      "cv"
+      "contact"
+      "duo";
+    gap: 20px;
+  }
+
+  /* La carte À propos garde ses proportions, sans devenir géante */
+  .profil {
+    width: 100%;
+    max-width: 460px;
+    min-height: 0;
+    margin-inline: auto;
+    aspect-ratio: 4 / 5;
+  }
+  .projets {
+    min-height: 240px;
+  }
+  .cv {
+    min-height: 380px;
+  }
+  .contact {
+    min-height: 200px;
+  }
+  .duo {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 170px;
   }
 }

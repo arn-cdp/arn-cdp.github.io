@@ -1,0 +1,25 @@
+.shell {
+  display: flex;
+  gap: 28px;
+  max-width: 1800px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 60px 40px 40px;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+/* Téléphone : la navigation passe en haut, au-dessus du contenu */
+@media (max-width: 700px) {
+  .shell {
+    flex-direction: column;
+    gap: 20px;
+    padding: 28px 20px 32px;
+  }
+}

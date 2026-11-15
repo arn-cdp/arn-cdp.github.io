@@ -1,0 +1,123 @@
+.carte {
+  --onglet-hauteur: 40px;
+  --pente: 30px;
+  --espace: 14px; /* distance entre le texte et la pente */
+  --boite: 150px; /* largeur de l'onglet : remplacée par la vraie mesure */
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  transition: transform 0.25s;
+}
+
+/* Tous les cadres grandissent au survol (souris uniquement) */
+@media (hover: hover) {
+  .carte:hover {
+    transform: translateY(-6px) scale(1.02);
+  }
+}
+
+/* Le texte de l'onglet, posé sur le fond de la page */
+.onglet {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: var(--onglet-hauteur);
+  width: max-content;
+  font-family: var(--font-titre), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #000;
+  white-space: nowrap;
+}
+.onglet svg {
+  width: 13px;
+  height: 13px;
+}
+.gauche .onglet {
+  left: 0;
+  padding-right: var(--espace);
+}
+.droite .onglet {
+  right: 0;
+  padding-left: var(--espace);
+}
+
+/* La carte colorée : elle grandit avec son contenu */
+.corps {
+  container-type: inline-size;
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: var(--onglet-hauteur);
+  border-radius: 22px;
+  overflow: hidden;
+}
+.haut .corps {
+  justify-content: flex-start;
+}
+.bas .corps {
+  justify-content: flex-end;
+}
+.rembourre .corps {
+  gap: 12px;
+  padding: calc(var(--onglet-hauteur) + 20px) 28px 28px;
+}
+
+/* Encoche en haut à gauche, large comme le texte */
+.gauche .corps {
+  clip-path: polygon(
+    0 var(--onglet-hauteur),
+    var(--boite) var(--onglet-hauteur),
+    calc(var(--boite) + var(--pente)) 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+}
+
+/* Encoche en haut à droite : le même dessin, en miroir */
+.droite .corps {
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--boite) - var(--pente)) 0,
+    calc(100% - var(--boite)) var(--onglet-hauteur),
+    100% var(--onglet-hauteur),
+    100% 100%,
+    0 100%
+  );
+}
+
+/* Le petit angle, uniquement sur les cartes cliquables */
+.cliquable .corps::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+.droite.cliquable .corps::after {
+  top: calc(var(--onglet-hauteur) + 16px);
+}
+
+/* Zoom d'une image marquée data-zoom, placée directement dans la carte */
+.carte:hover .corps > [data-zoom] {
+  transform: scale(1.04);
+}
+
+/* Lien invisible sur toute la carte */
+.lien {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}

@@ -1,54 +1,4 @@
-.carte {
-  --onglet-largeur: 190px;
-  --onglet-hauteur: 40px;
-  --pente: 30px;
-
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.25s;
-}
-.carte:hover {
-  transform: translateY(-6px);
-}
-
-/* Le texte, posé dans l'encoche */
-.onglet {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: calc(var(--onglet-largeur) - var(--pente));
-  height: var(--onglet-hauteur);
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #111;
-}
-.icone {
-  width: 14px;
-  height: 14px;
-}
-
-/* La carte violette, avec le coin haut-gauche découpé */
-.corps {
-  container-type: inline-size;
-  position: absolute;
-  inset: 0;
-  background: #7f82d6;
-  border-radius: 22px;
-  overflow: hidden;
-  clip-path: polygon(
-    0 var(--onglet-hauteur),
-    calc(var(--onglet-largeur) - var(--pente)) var(--onglet-hauteur),
-    var(--onglet-largeur) 0,
-    100% 0,
-    100% 100%,
-    0 100%
-  );
-}
+/* Tout est proportionnel à la largeur de la carte (cqw) */
 
 /* Le cercle : 68 % de la largeur de la carte */
 .photo {
@@ -80,10 +30,6 @@
   left: 6cqw;
   right: 6cqw;
   bottom: 6cqw;
-  color: white;
-}
-.texte p {
-  margin: 0;
 }
 .prenom {
   font-size: 13cqw;
@@ -98,4 +44,5 @@
 .email {
   margin-top: 3cqw;
   font-size: 3.6cqw;
+  overflow-wrap: anywhere;
 }

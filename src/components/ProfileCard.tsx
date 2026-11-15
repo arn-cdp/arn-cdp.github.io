@@ -1,4 +1,5 @@
 import { FaRegUser } from "react-icons/fa";
+import TabCard from "./TabCard";
 import styles from "./ProfileCard.module.css";
 
 type ProfileCardProps = {
@@ -6,27 +7,35 @@ type ProfileCardProps = {
   nom: string;
   email: string;
   photoUrl: string;
+  href?: string;
+  className?: string;
 };
 
-export default function ProfileCard({ prenom, nom, email, photoUrl }: ProfileCardProps) {
+export default function ProfileCard({
+  prenom,
+  nom,
+  email,
+  photoUrl,
+  href,
+  className,
+}: ProfileCardProps) {
   return (
-    <div className={styles.carte}>
-      <div className={styles.onglet}>
-        <FaRegUser className={styles.icone} />
-        À propos
+    <TabCard
+      label="À propos"
+      icon={<FaRegUser />}
+      href={href}
+      backgroundColor="#7f82d6"
+      className={className}
+    >
+      <div className={styles.photo}>
+        <img src={photoUrl} alt={`${prenom} ${nom}`} />
       </div>
 
-      <div className={styles.corps}>
-        <div className={styles.photo}>
-          <img src={photoUrl} alt={`${prenom} ${nom}`} />
-        </div>
-
-        <div className={styles.texte}>
-          <p className={styles.prenom}>{prenom}</p>
-          <p className={styles.nom}>{nom}</p>
-          <p className={styles.email}>{email}</p>
-        </div>
+      <div className={styles.texte}>
+        <p className={styles.prenom}>{prenom}</p>
+        <p className={styles.nom}>{nom}</p>
+        <p className={styles.email}>{email}</p>
       </div>
-    </div>
+    </TabCard>
   );
 }

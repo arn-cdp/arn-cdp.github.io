@@ -1,38 +1,35 @@
-import Link from "next/link";
-import styles from "./SideNav.module.css";
+"use client";
 
-type NavItem = {
-  label: string;
-  href: string;
-  fichier?: boolean;
-};
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import type { NavItem } from "@/data/site";
+import styles from "./SideNav.module.css";
 
 type SideNavProps = {
   items: NavItem[];
 };
 
 export default function SideNav({ items }: SideNavProps) {
+  const pathname = usePathname();
+
   return (
     <nav className={styles.nav} aria-label="Navigation principale">
       <ul className={styles.liste}>
-        {items.map((item) => (
-          <li key={item.href}>
-            {item.fichier ? (
-              <a
-                className={styles.lien}
+        {items.map((item) => {
+          const actif = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+
+          return (
+            <li key={item.href}>
+              <Link
+                className={`${styles.lien} ${actif ? styles.actif : ""}`}
                 href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                aria-current={actif ? "page" : undefined}
               >
                 {item.label}
-              </a>
-            ) : (
-              <Link className={styles.lien} href={item.href}>
-                {item.label}
               </Link>
-            )}
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

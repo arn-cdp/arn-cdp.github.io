@@ -1,0 +1,39 @@
+.grille {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
+  gap: 24px;
+  min-height: 640px;
+}
+
+.etapes {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: 24px;
+}
+
+.chiffre {
+  font-family: var(--font-titre), sans-serif;
+  font-size: 20cqw;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.legende {
+  font-size: 1.375rem;
+}
+
+/* Téléphone */
+@media (max-width: 700px) {
+  .grille {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    min-height: 0;
+  }
+  .stat {
+    min-height: 240px;
+  }
+  .etapes {
+    grid-auto-rows: auto;
+    gap: 20px;
+  }
+}

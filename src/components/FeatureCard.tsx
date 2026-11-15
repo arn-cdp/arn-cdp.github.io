@@ -1,29 +1,35 @@
-import Link from "next/link";
+import TabCard from "./TabCard";
 import styles from "./FeatureCard.module.css";
 
 type FeatureCardProps = {
+  onglet: string;
   value: string;
   label: string;
   href: string;
   backgroundColor: string;
   textColor?: string;
+  className?: string;
 };
 
 export default function FeatureCard({
+  onglet,
   value,
   label,
   href,
   backgroundColor,
-  textColor = "#111111",
+  textColor = "#000000",
+  className,
 }: FeatureCardProps) {
   return (
-    <Link
+    <TabCard
+      label={onglet}
       href={href}
-      className={styles.carte}
-      style={{ backgroundColor, color: textColor }}
+      backgroundColor={backgroundColor}
+      textColor={textColor}
+      className={className}
     >
       <p className={styles.valeur}>{value}</p>
       <p className={styles.label}>{label}</p>
-    </Link>
+    </TabCard>
   );
 }
