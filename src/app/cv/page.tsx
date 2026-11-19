@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageTitle from "@/components/PageTitle";
 import TabCard from "@/components/TabCard";
-import typo from "@/components/Typo.module.css";
 import { profil } from "@/data/site";
 import styles from "./page.module.css";
 
@@ -14,57 +14,35 @@ export default function CvPage() {
     <>
       <PageTitle>CV</PageTitle>
 
-      <div className={styles.grille}>
-        <div className={styles.actions}>
-          <TabCard
-            label="Ouvrir"
-            href={profil.cvUrl}
-            backgroundColor="#020617"
-            textColor="#ffffff"
-            align="bas"
-            padded
-          >
-            <h2 className={typo.h2}>Ouvrir le PDF</h2>
-            <p className={typo.p}>cv-arnaud-pereira-da-costa.pdf</p>
-          </TabCard>
-
-          <TabCard
-            label="Mise à jour"
-            backgroundColor="#a9dcd6"
-            textColor="#111111"
-            align="bas"
-            padded
-          >
-            <p className={typo.p}>Dernière mise à jour</p>
-            <h2 className={typo.h3}>[Date]</h2>
-          </TabCard>
-
-          <TabCard
-            label="Recherche"
-            backgroundColor="#7f82d6"
-            textColor="#111111"
-            align="bas"
-            padded
-          >
-            <h2 className={typo.h3}>Alternance</h2>
-            <p className={typo.p}>Informatique · Data · Réseau</p>
-          </TabCard>
-        </div>
-
-        {/* L'aperçu est masqué sur téléphone : les mobiles affichent mal les PDF intégrés */}
-        <TabCard
-          label="CV"
-          backgroundColor="#ffc15e"
-          textColor="#111111"
-          className={styles.apercu}
-        >
-          <iframe
-            className={styles.pdf}
-            src={`${profil.cvUrl}#toolbar=0&navpanes=0&view=FitH`}
-            title="Aperçu de mon CV"
-          />
-        </TabCard>
+      <div className={styles.boutons}>
+        <a className={styles.bouton} href={profil.cvUrl} download>
+          Télécharger
+        </a>
+        <Link className={`${styles.bouton} ${styles.contour}`} href="/contact">
+          Me contacter
+        </Link>
       </div>
+
+      <TabCard
+        label="CV"
+        backgroundColor="#ffc15e"
+        textColor="#111111"
+        className={styles.apercu}
+      >
+        <div className={styles.cadre}>
+          {/* Un clic sur l'image l'ouvre en grand (pratique pour zoomer sur téléphone) */}
+          <a href={profil.cvImageUrl} target="_blank" rel="noopener noreferrer">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className={styles.image}
+              src={profil.cvImageUrl}
+              alt="Mon CV : Arnaud Pereira Da Costa, recherche d'alternance en informatique"
+              width={1653}
+              height={2339}
+            />
+          </a>
+        </div>
+      </TabCard>
     </>
   );
 }

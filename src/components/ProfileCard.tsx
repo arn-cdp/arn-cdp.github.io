@@ -22,7 +22,6 @@ export default function ProfileCard({
   return (
     <TabCard
       label="À propos"
-      icon={<FaRegUser />}
       href={href}
       backgroundColor="#7f82d6"
       className={className}

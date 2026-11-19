@@ -28,6 +28,7 @@ export const profil = {
   githubNom: "arn-cdp",
   photoUrl: "/photo_profil-removebg-preview.png",
   cvUrl: "/cv-arnaud-pereira-da-costa.pdf",
+  cvImageUrl: "/cv-arnaud-pereira-da-costa.png",
 };
 
 // ---------------------------------------------------------------- Projets
@@ -46,18 +47,20 @@ export const projets: Projet[] = [
   {
     titre: "Projet A",
     type: "Application",
-    description: "[Description à compléter]",
-    tags: ["[Techno]"],
+    description: "Projet d'apprentissage en IA mené à trois. Collecter les statistiques des parties professionnelles de Rocket League, entraîner un modèle qui prédit le résultat d'un match, puis présenter les résultats dans un tableau de bord interactif.",
+    tags: ["Python", "Pandas", "Néon"],
     couleur: "#020617",
     texteCouleur: "#ffffff",
     imageUrl: "/projet_a.png",
+    lien: "https://github.com/arn-cdp/Projet_A_R-sum-_Pro", 
   },
   {
-    titre: "Gestionnaire de tâches",
+    titre: "HikarCards",
     type: "Python",
-    description: "Application Python pour organiser et suivre mes tâches du quotidien.",
-    tags: ["Python"],
+    description: "Premier site fictif de vente de cartes en ligne, développé en html & css.",
+    tags: ["HTML / CSS"],
     couleur: "#ffc15e",
+    lien: "https://github.com/arn-cdp/HikarCards",
   },
   {
     titre: "Ce portfolio",
@@ -65,7 +68,7 @@ export const projets: Projet[] = [
     description: "Un site en bento design, pensé comme un projet à part entière.",
     tags: ["React", "Next.js", "TypeScript"],
     couleur: "#8f74c4",
-    lien: "https://github.com/arn-cdp/arn-cdp.github.io",
+    lien: "https://github.com/arn-cdp/Projet_A_R-sum-_Pro",
   },
 ];
 
@@ -84,22 +87,22 @@ export const competences: Competence[] = [
   {
     onglet: "Web",
     titre: "Développement web",
-    texte: "Des interfaces modernes et des sites complets, comme ce portfolio.",
-    tags: ["HTML / CSS", "React", "Next.js", "TypeScript"],
+    texte: "Pars le biais de projets personnels et de ma formation, j'apprends à créer des sites web modernes et interactifs.",
+    tags: ["En cours", "HTML / CSS", "React", "Next.js", "TypeScript"],
     couleur: "#8f74c4",
     large: true,
   },
   {
     onglet: "Python",
     titre: "Python",
-    texte: "Scripts et petites applications.",
-    tags: ["Scripts", "Projets perso"],
+    texte: "En apprentissage : Scripts et petites applications.",
+    tags: ["En cours", "Scripts", "Projets perso"],
     couleur: "#a9dcd6",
   },
   {
     onglet: "Data",
     titre: "Data & IA",
-    texte: "En apprentissage : analyse de données et intelligence artificielle.",
+    texte: "En apprentissage : Analyse de données et mise en place d'agents ia.",
     tags: ["En cours"],
     couleur: "#ffc15e",
   },
@@ -114,7 +117,7 @@ export const competences: Competence[] = [
   {
     onglet: "BTP",
     titre: "Savoir-faire BTP",
-    texte: "Gestion de chantier, planning et coordination d’équipes.",
+    texte: "Gestion de sous-traitance, planning et coordination d’équipes.",
     tags: ["5 ans"],
     couleur: "#7f82d6",
   },
@@ -133,22 +136,42 @@ export const etapes: Etape[] = [
   {
     onglet: "1 · BTP",
     titre: "Conducteur de travaux",
-    texte: "Suivi de chantiers, coordination des équipes et respect des délais.",
-    dates: "[Dates à compléter]",
+    texte: "Diplômé d'un BTS Bâtiment en alternance, j'en garde une très bonne expérience, l'entreprise qui m'accueillait m'a embauché à l'obtention de mon diplôme. Mon rôle consistait à suivre la sous-traitance, coordonner les équipes et faire respecter les délais.",
+    dates: "2018",
     couleur: "#ffc15e",
   },
   {
-    onglet: "2 · Reconversion",
-    titre: "Apprentissage en autonomie",
-    texte: "Python, HTML/CSS, React, Next.js et TypeScript à travers des projets personnels.",
-    dates: "[Dates à compléter]",
+    onglet: "2 · Autodidacte",
+    titre: "Projets personnels",
+    texte: "Passionné d'informatique depuis toujours, j'apprends à travers des projets personnels (Projet en groupe PROJET A : Pyhton, Agents IA; ce portfolio : TypeScript, Next.js, React; site HikariCards : HTML/CSS). Aussi, l'ia m'aide à comprendre des sujets qui me semblaient inaccessibles avant et a changé ma méthode de travail.",
+    dates: "2026",
     couleur: "#8f74c4",
   },
   {
     onglet: "3 · ESGI",
     titre: "Bachelor Informatique",
-    texte: "Formation à Grenoble, à la recherche d’une alternance.",
-    dates: "[Dates à compléter]",
+    texte: "Formation à Grenoble, en alternance. Je m'y forme au Développement : algorithmique, langage C, programmation orientée objet (Java), modélisation UML, bases de données & SQL. Systèmes & réseaux : architecture réseaux, administration Linux/Windows, virtualisation. Gestion de projet & entreprise : introduction à la gestion de projet, connaissance de l'entreprise. Versioning : Git/GitHub. Je recherche une entreprise pour mettre ces notions en pratique.",
+    dates: "2026",
     couleur: "#7f82d6",
   },
 ];
+
+// ---------------------------------------------------------------- Fil rouge (page Parcours)
+export type FilRouge = {
+  reconversion: string;
+  recherche: { libelle: string; valeur: string }[];
+  contactLabel: string;
+};
+
+export const filRouge: FilRouge = {
+  reconversion:
+    "Après cinq ans dans le BTP, j'ai choisi de me tourner vers l'informatique, un domaine qui me passionne depuis toujours. Mon expérience de terrain m'a appris la rigueur, la gestion des délais et la coordination d'équipes. Des qualités que je veux mettre a votre service.",
+  recherche: [
+    { libelle: "Contrat : ", valeur: "Alternance (Bachelor Informatique, ESGI)" },
+    { libelle: "Lieu : ", valeur: "Grenoble et alentours" },
+    { libelle: "Rythme : ", valeur: "3 jours en entreprise / 2 jours à l'école" },
+    { libelle: "Début : ", valeur: "2026" },
+    { libelle: "Domaines : ", valeur: "Réseau, Data, IA, Dev, Support" },
+  ],
+  contactLabel: "Me contacter",
+};

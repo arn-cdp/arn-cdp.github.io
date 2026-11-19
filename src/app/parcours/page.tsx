@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageTitle from "@/components/PageTitle";
 import TabCard from "@/components/TabCard";
 import typo from "@/components/Typo.module.css";
-import { etapes } from "@/data/site";
+import { etapes, filRouge } from "@/data/site";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -16,16 +17,31 @@ export default function ParcoursPage() {
 
       <div className={styles.grille}>
         <TabCard
-          label="En chiffres"
+          label="Fil rouge"
           backgroundColor="#a9dcd6"
           textColor="#111111"
-          align="bas"
+          align="haut"
           padded
           className={styles.stat}
         >
-          <p className={styles.chiffre}>5 ans</p>
-          <p className={styles.legende}>dans le BTP</p>
-          <p className={typo.p}>Conducteur de travaux avant la reconversion.</p>
+          <h2 className={typo.h3}>Ma reconversion</h2>
+          <p className={typo.p}>{filRouge.reconversion}</p>
+
+          <h2 className={typo.h3}>Ce que je cherche</h2>
+          <ul className={styles.recherche}>
+            {filRouge.recherche.map((ligne) => (
+              <li key={ligne.libelle}>
+                <span className={styles.libelle}>{ligne.libelle}</span>
+                <span>{ligne.valeur}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className={typo.tags}>
+            <Link href="/contact" className={typo.tag}>
+              {filRouge.contactLabel}
+            </Link>
+          </div>
         </TabCard>
 
         <div className={styles.etapes}>
